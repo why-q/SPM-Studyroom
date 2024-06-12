@@ -41,7 +41,8 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# RUN mvn package -DskipTests
+# Run mvn
+RUN mvn package -DskipTests
 
 # Copy JAR
 WORKDIR /app
