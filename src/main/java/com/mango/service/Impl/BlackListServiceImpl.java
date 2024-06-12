@@ -14,11 +14,8 @@ import java.util.List;
 
 @Service
 public class BlackListServiceImpl implements BlackListService {
-
     @Autowired
     BlackListDao blackListDao;
-
-
 
     @Override
     public void addStudentBlackList(BlackList blackList) {

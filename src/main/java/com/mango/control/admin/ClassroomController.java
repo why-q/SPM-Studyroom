@@ -18,8 +18,6 @@ import java.util.Map;
 
 @Controller
 public class ClassroomController {
-
-
     @Autowired
     ClassroomServiceImpl classroomService;
 
@@ -76,7 +74,6 @@ public class ClassroomController {
             model.addAttribute("classrooms",classrooms);
             return "classroom/all_classroom";
         }else {
-            //删除所有教室相关表 教室，教室时段表，教室可用表等信息
             classroomService.deleteClassroomInfo(room_id);
         }
         return "redirect:all_classroom";

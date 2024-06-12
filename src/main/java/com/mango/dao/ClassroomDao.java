@@ -13,22 +13,13 @@ import java.util.Map;
 public interface ClassroomDao {
     List<Classroom> getAll();
 
-
     void updateClassroom(Map<String, Object> map);
-
     void updateRoomAvailableTimeInfo(RoomAvailableTimeInfo roomAvailableTimeInfo);
-
     void updateDeleteRoomAvailableSeatInfo(RoomAvailableTimeInfo roomAvailableTimeInfo);
-
     int  getClassroomReserved(String room_id);
-
     void deleteClassroom(String room_id);
-
     void deleteClassroomTimeTable(String room_id);
-
     void deleteClassroomAvailableTime(String room_id);
-
     void addClassroom(Classroom classroom);
-
     void addClassroomAvailable(RoomAvailableTimeInfo roomAvailableTimeInfo);
 }

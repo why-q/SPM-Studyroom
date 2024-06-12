@@ -10,11 +10,9 @@ import java.util.List;
 
 @Service
 public interface BlackListService {
+    List<Student> getAllBlackedStudent();
     void addStudentBlackList(BlackList blackList);
 
-    List<Student> getAllBlackedStudent();
-
-    void deleteStudentBlackList(String s_id);
-
     BlackList getBlackedStudentById(String s_id);
+    void deleteStudentBlackList(String s_id);
 }

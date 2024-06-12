@@ -14,7 +14,6 @@ import java.util.List;
 
 @Controller
 public class BaseController {
-
     @Autowired
     private StudentServiceImpl studentService;
 
@@ -25,13 +24,8 @@ public class BaseController {
         return "list";
     }
 
-    /**
-     * 获取当前用户
-     * @param request
-     * @return
-     */
+    // 获取当前用户
     public Student student(HttpServletRequest request) {
         return CommonUtil.getLoginUser(request);
     }
-
 }

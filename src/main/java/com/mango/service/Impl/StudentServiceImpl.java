@@ -15,7 +15,6 @@ import java.util.Map;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-
     @Autowired
     private StudentDao studentDao;
 
@@ -31,7 +30,6 @@ public class StudentServiceImpl implements StudentService {
     public int updatePassword(String s_id, String new_password) {
         return studentDao.updatePassword(s_id,new_password);
     }
-
 
     @Override
     public List<Student> getAll() {
@@ -84,7 +82,6 @@ public class StudentServiceImpl implements StudentService {
                     for (int k = j + 1; k < info.size(); k++) {
                         int date3 = Integer.parseInt(info.get(k));
                         if (Math.abs(date2 - date3) <= 7) {
-//                            System.out.println("yep");
                             return true;
                         }
                     }

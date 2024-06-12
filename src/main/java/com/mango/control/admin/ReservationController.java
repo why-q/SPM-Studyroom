@@ -26,19 +26,16 @@ public class ReservationController {
         Student student = new Student();
 
         String searchByIdOrName = request.getParameter("searchByIdOrName");
-//        System.out.println(searchByIdOrName);
         if (!"".equals(searchByIdOrName) && searchByIdOrName != null) {
             student.setS_id(searchByIdOrName);
         }
 
         String selectedYear = request.getParameter("selectedYear");
-//        System.out.println(!"".equals(selectedYear));
         if(!"".equals(selectedYear) && selectedYear != null) {
             student.setS_year(selectedYear);
         }
 
         String selectedMajor = request.getParameter("selectedMajor");
-//        System.out.println("selectedMajor" + selectedMajor);
         if (!"".equals(selectedMajor) && selectedMajor != null) {
             student.setS_major(selectedMajor);
         }
@@ -56,7 +53,6 @@ public class ReservationController {
         Map<String, Object> map = new HashMap<>();
 
         String searchByIdOrName = request.getParameter("searchByIdOrName");
-//        System.out.println(searchByIdOrName);
         if (!"".equals(searchByIdOrName) && searchByIdOrName != null) {
             map.put("room_id",searchByIdOrName);
         }
@@ -70,12 +66,10 @@ public class ReservationController {
         }
 
         String selectDate = request.getParameter("selectDate");
-//        System.out.println(selectDate);
         if (!"".equals(selectDate) && selectDate != null) {
             String date_begin = CommonUtil.getDateFormat(selectDate.substring(0, selectDate.indexOf(" ")));
-//            System.out.println(date_begin);
             String date_end = CommonUtil.getDateFormat(selectDate.substring(selectDate.lastIndexOf(" ") + 1));
-//            System.out.println(date_end);
+
             if (!date_begin.equals(date_end)) {
                 map.put("date_begin", date_begin);
                 map.put("date_end", date_end);
@@ -88,6 +82,4 @@ public class ReservationController {
 
         return "reservation/all_classroom_reservation";
     }
-
-
 }

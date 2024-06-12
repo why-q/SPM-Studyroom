@@ -69,12 +69,7 @@ public class StudentIndexController {
 
     @GetMapping("/cancel_reservation")
     public String cancel_reservation(String s_id, String room_id, String time_id, String reservation_date, String building_id) {
-//        System.out.println(s_id);
-//        System.out.println(room_id);
-//        System.out.println(reservation_date);
-//        System.out.println(building_id);
         reservationService.updateDeleteReservationInfo(s_id,room_id,time_id,reservation_date,building_id);
         return "redirect:user_reservation";
     }
-
 }

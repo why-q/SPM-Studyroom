@@ -19,7 +19,4 @@ public class TimeTable {
     private String time_begin;
     private String time_end;
     private Classroom classroom;
-//    private List<RoomAvailableTimeInfo> roomAvailableTimeInfos;
-
-
 }
