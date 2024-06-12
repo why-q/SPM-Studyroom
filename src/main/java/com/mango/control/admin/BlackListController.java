@@ -38,19 +38,13 @@ public class BlackListController {
         String selectStudentId = request.getParameter("selectStudentId");
         String date_begin = null;
         String date_end = null;
-
         String selectDate = request.getParameter("selectDate");
 
-//        System.out.println(selectDate);
         if (!"".equals(selectDate) && selectDate != null) {
             date_begin = CommonUtil.getDateFormat(selectDate.substring(0, selectDate.indexOf(" ")));
-//            System.out.println(date_begin);
             date_end = CommonUtil.getDateFormat(selectDate.substring(selectDate.lastIndexOf(" ") + 1));
-//            System.out.println(date_end);
         }
-        System.out.println("开始添加黑名单学生");
         blackListService.addStudentBlackList(new BlackList(selectStudentId,date_begin,date_end, WebConstant.BLACKED_SUCCESS_STATE,CommonUtil.getLoginUser(request).getS_id()));
-        System.out.println("添加黑名单学生成功");
         return "redirect:all_student";
     }
 

@@ -14,7 +14,6 @@ import java.util.List;
 
 @Controller
 public class IndexController {
-
     @Autowired
     StudentServiceImpl studentService;
 
@@ -40,6 +39,4 @@ public class IndexController {
 
         return "index";
     }
-
-
 }

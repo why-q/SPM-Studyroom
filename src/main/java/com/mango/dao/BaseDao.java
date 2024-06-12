@@ -6,8 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BaseDao {
     int countStudent();
-
     int countClassroom();
-
     int countReservation();
 }

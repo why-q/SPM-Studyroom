@@ -14,14 +14,8 @@ public interface ClassroomService {
     List<Classroom> getAll();
 
     void updateClassroom(Map<String, Object> map);
-
-
     void deleteClassroomInfo(String room_id);
-
     int  getClassroomReserved(String room_id);
-
     void addClassroom(Classroom classroom);
-
     void addClassAvailable(RoomAvailableTimeInfo roomAvailableTimeInfo);
-
 }

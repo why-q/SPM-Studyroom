@@ -9,12 +9,9 @@ import java.util.List;
 
 @Mapper
 public interface BlackListDao {
-
-    void addStudentBlackList(BlackList blackList);
-
     List<Student> getAllBlackedStudent();
-
-    void deleteStudentBlackList(String s_id);
-
+    
     BlackList getBlackedStudentById(String s_id);
+    void deleteStudentBlackList(String s_id);
+    void addStudentBlackList(BlackList blackList);
 }

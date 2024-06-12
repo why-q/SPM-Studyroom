@@ -21,11 +21,8 @@ import java.util.Map;
 @Service
 @Data
 public class ReservationServiceImpl implements ReservationService {
-
     private static Map<String, Map<String, String>> room_id_and_time_id = new HashMap<>();
     private static List<Classroom> allSelectClassrooms;
-
-
 
     @Autowired
     StudentDao studentDao;
@@ -52,7 +49,6 @@ public class ReservationServiceImpl implements ReservationService {
         ReservationServiceImpl.allSelectClassrooms = allSelectClassrooms;
     }
 
-
     @Override
     public List<Student> getAllStudentReservationInfo(Student student) {
         return reservationDao.getAllStudentReservationInfo(student);
@@ -70,7 +66,6 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void updateAddReservationInfo(String s_id) {
-
         List<Classroom> allSelectClassrooms = getAllSelectClassrooms();
         RoomAvailableTimeInfo roomAvailableTime = new RoomAvailableTimeInfo();
 
@@ -90,21 +85,13 @@ public class ReservationServiceImpl implements ReservationService {
                 studentReservation.setState(WebConstant.RESERVATION_SUCCESS_STATE);
                 studentReservation.setRoom_name(selectClassroom.getRoom_name());
 
-                System.out.println(roomAvailableTimeInfo.getReservation_num());
-
                 Integer reservationNums = Integer.parseInt(roomAvailableTimeInfo.getReservation_num()) + 1;
                 roomAvailableTime.setReservation_num(reservationNums.toString());
 
                 Integer availableNums = Integer.parseInt(roomAvailableTimeInfo.getAvailable_num()) - 1;
                 roomAvailableTime.setAvailable_num(availableNums.toString());
 
-
-
-
-                // 添加学生预约信息记录
                 studentDao.addStudentReservation(studentReservation);
-
-                // 更新可用教室时段表座位信息
                 classroomDao.updateRoomAvailableTimeInfo(roomAvailableTime);
             }
         }
@@ -113,18 +100,8 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void updateDeleteReservationInfo(String s_id, String room_id, String time_id, String reservation_date, String building_id) {
-        System.out.println("开始取消预约");
-        System.out.println(time_id);
         studentDao.updateStudentReservationState(new StudentReservation(s_id,time_id,reservation_date,room_id));
-//        studentDao.deleteCancelReservation(new StudentReservation(s_id,time_id,reservation_date,room_id));
-        System.out.println("修改学生预约表成功");
-        System.out.println("开始修改座位数");
+
         classroomDao.updateDeleteRoomAvailableSeatInfo(new RoomAvailableTimeInfo(time_id, room_id, building_id, reservation_date));
-        System.out.println("修改座位数成功");
-        System.out.println("取消预约成功");
-
     }
-
-
-
 }

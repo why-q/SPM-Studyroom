@@ -11,15 +11,8 @@ import java.util.Map;
 
 @Mapper
 public interface ReservationDao {
-
     List<Student> getAllStudentReservationInfo(Student student);
-
-
     List<Classroom> getAllClassroomReservationInfo(Map<String, Object> map);
-
-
     List<Classroom> getAllAvailableClassroom(Map<String, Object> map);
-
-
     List<String> getAllCanceledReservationDateById(String s_id);
 }

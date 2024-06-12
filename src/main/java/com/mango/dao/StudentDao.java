@@ -15,23 +15,17 @@ public interface StudentDao {
     List<Student> getAll();
 
     int updateStudentInfo(Student student);
-
     int updatePassword(String s_id, String new_password);
 
     List<Student> countStudentReservation();
 
     int countReservation(Map<String, Object> map);
-
     void addStudentReservation(StudentReservation studentReservation);
-
     void deleteCancelReservation(StudentReservation studentReservation);
-
     void addStudent(Student student);
-
     void updateStudentReservationState(StudentReservation studentReservation);
-
+    
     void deleteStudentById(String s_id);
     void deleteStudentBlackListById(String s_id);
     void deleteStudentReservationById(String s_id);
-
 }

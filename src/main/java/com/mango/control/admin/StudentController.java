@@ -19,9 +19,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
-//@RestController
 public class StudentController {
-
     @Autowired
     private StudentServiceImpl studentService;
 
@@ -37,20 +35,13 @@ public class StudentController {
     @GetMapping("/add_new_student")
     public String add_new_student(HttpServletRequest request) {
         String s_id = request.getParameter("s_id");
-
         String s_name = request.getParameter("s_name");
-
         String s_major = request.getParameter("s_major");
-
         String s_class = request.getParameter("s_class");
-
         String s_year = request.getParameter("s_year");
-
         String s_phone_number = request.getParameter("s_phone_number");
 
         studentService.addStudent(new Student(s_id,s_name,s_class,s_year,s_major,s_phone_number));
-
-
         return "redirect:all_student";
     }
 
@@ -60,6 +51,4 @@ public class StudentController {
         studentService.deleteStudentInfo(s_id);
         return "redirect:all_student";
     }
-
-
 }
