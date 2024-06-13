@@ -79,7 +79,7 @@
                                                 <td th:text="${studentReservation.getReservation_date()}"></td>
                                                 <td class="text-start">
                                                     <span th:class="${studentReservation.getState()=='预约成功'?'badge badge-success':'badge badge-danger'}" th:text="${studentReservation.getState()}"></span>
-                                                    <span type="button" class="badge badge-warning edit" data-bs-toggle='modal' th:attr="data-bs-target='#modal-cancel'+${studentReservation.getRoom_name()}+${studentReservation.getTime_id()}" >
+                                                    <span type="button" class="badge badge-warning edit" data-bs-toggle='modal' th:attr="data-bs-target='#modal-cancel'+${studentReservation.getRoom_name()}+${studentReservation.getTime_id()}" style="color: black;">
                                                         取消预约
                                                     </span>
 

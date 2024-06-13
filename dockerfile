@@ -46,8 +46,8 @@ RUN mvn package -DskipTests
 
 # Copy JAR
 WORKDIR /app
-COPY ./target/reserve_demo-0.0.1-SNAPSHOT.jar ./target/
-RUN chmod +x /app/target/reserve_demo-0.0.1-SNAPSHOT.jar
+COPY ./target/studyroom-1.1.2.jar ./target/
+RUN chmod +x /app/target/studyroom-1.1.2.jar
 
 # Expose the port the Spring Boot app runs on
 EXPOSE 9099
