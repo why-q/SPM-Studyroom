@@ -32,7 +32,7 @@ EXPOSE 3306
 ENV MYSQL_ROOT_PASSWORD=ye0401
 
 # Move the bash
-COPY reservation_demo.sql /docker-entrypoint-initdb.d/
+COPY auto_create.sql /docker-entrypoint-initdb.d/
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 

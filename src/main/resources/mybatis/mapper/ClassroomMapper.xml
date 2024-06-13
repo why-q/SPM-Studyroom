@@ -15,8 +15,8 @@
                c.room_id,
                tb.building_id t_building_id,
                c.building_id
-        from reservation_demo.classroom c,
-             reservation_demo.t_building tb
+        from demo.classroom c,
+             demo.t_building tb
         where c.building_id = tb.building_id
 
     </select>
@@ -37,7 +37,7 @@
 
     <!--  更新教室信息-->
     <update id="updateClassroom" parameterType="Map">
-        update reservation_demo.classroom
+        update demo.classroom
         <set>
             <if test="room_name != null">
                 room_name = #{room_name},
@@ -58,7 +58,7 @@
 
     <!--    更新教室可用时段座位数-->
     <update id="updateRoomAvailableTimeInfo" parameterType="RoomAvailableTimeInfo">
-        update reservation_demo.room_available_time_info
+        update demo.room_available_time_info
         <set>
             <if test="reservation_num != null">
                 reservation_num = #{reservation_num},
@@ -73,7 +73,7 @@
 
     <!--    根据四个主键获得两个座位数-->
     <update id="updateDeleteRoomAvailableSeatInfo" parameterType="RoomAvailableTimeInfo">
-        update reservation_demo.room_available_time_info
+        update demo.room_available_time_info
         set reservation_num = reservation_num - 1,
             available_num   = available_num + 1
         where time_id = #{time_id}
@@ -85,37 +85,37 @@
     <!--    根据room_id获得该教室预约数量-->
     <select id="getClassroomReserved" resultType="int">
         select count(1) nums
-        from reservation_demo.student_reservation
+        from demo.student_reservation
         where room_id = #{room_id}
     </select>
 
     <delete id="deleteClassroom">
         delete
-        from reservation_demo.classroom
+        from demo.classroom
         where room_id = #{room_id}
     </delete>
 
     <delete id="deleteClassroomTimeTable">
         delete
-        from reservation_demo.time_table
+        from demo.time_table
         where room_id = #{room_id}
     </delete>
 
     <delete id="deleteClassroomAvailableTime">
         delete
-        from reservation_demo.room_available_time_info
+        from demo.room_available_time_info
         where room_id = #{room_id}
     </delete>
 
     <!--    添加新教室-->
     <insert id="addClassroom" parameterType="Classroom">
-        insert into reservation_demo.classroom(room_id, room_name, building_id, room_floor, available_seat, is_multimedia_room)
+        insert into demo.classroom(room_id, room_name, building_id, room_floor, available_seat, is_multimedia_room)
         values (#{room_id},#{room_name},#{building_id},#{room_floor},#{available_seat},#{is_multimedia_room})
     </insert>
 
 
     <insert id="addClassroomAvailable" parameterType="RoomAvailableTimeInfo">
-        insert into reservation_demo.room_available_time_info(time_id, room_id, building_id, available_date, reservation_num, available_num)
+        insert into demo.room_available_time_info(time_id, room_id, building_id, available_date, reservation_num, available_num)
         values (#{time_id},#{room_id},#{building_id},#{available_date},#{reservation_num},#{available_num})
     </insert>
 </mapper>
