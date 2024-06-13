@@ -59,11 +59,11 @@ fi
 
 # Import .sql file
 echo "Import .sql file."
-if [ -f /docker-entrypoint-initdb.d/reservation_demo.sql ]; then
-    echo "Importing database from /docker-entrypoint-initdb.d/reservation_demo.sql"
-    "${mysql[@]}" reservation_demo </docker-entrypoint-initdb.d/reservation_demo.sql
+if [ -f /docker-entrypoint-initdb.d/auto_create.sql ]; then
+    echo "Importing database from /docker-entrypoint-initdb.d/auto_create.sql"
+    "${mysql[@]}" reservation_demo </docker-entrypoint-initdb.d/auto_create.sql
 fi
 
 # Start the Spring Boot application
 echo "Start the SpringBoot application."
-exec java -jar /app/target/reserve_demo-0.0.1-SNAPSHOT.jar
+exec java -jar /app/target/studyroom-1.1.2.jar
