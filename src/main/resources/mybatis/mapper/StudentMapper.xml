@@ -8,13 +8,13 @@
     <!--    根据学号获取单个学生信息-->
     <select id="getStudentById" resultType="Student">
         select *
-        from reservation_demo.student
+        from demo.student
         where s_id = #{s_id}
     </select>
 
 
     <update id="updatePassword">
-        update reservation_demo.student
+        update demo.student
         <set>
             <if test="`password` != null">
                 `password` = #{new_password}
@@ -26,14 +26,14 @@
     <!--    获取除了管理员以外的所有学生-->
     <select id="getAll" resultType="Student">
         select *
-        from reservation_demo.student
+        from demo.student
         where s_id != 'admin';
     </select>
 
 
     <!--    根据s_id更新学生信息-->
     <update id="updateStudentInfo" parameterType="Student">
-        update reservation_demo.student
+        update demo.student
         <set>
             <if test="s_name != null">
                 s_name = #{s_name},
@@ -64,8 +64,8 @@
                stu.s_phone_number,
                count(state = '预约成功' or null) suc_num,
                count(state = '预约取消' or null) canceled_num
-        from reservation_demo.student_reservation sr,
-             reservation_demo.student stu
+        from demo.student_reservation sr,
+             demo.student stu
         where stu.s_id = sr.s_id
         group by s_id
     </select>
@@ -85,8 +85,8 @@
     <!-- 根据s_id获得该学生预约总数,带搜索-->
     <select id="countReservation" parameterType="Map" resultType="int">
         select count(*) count_num
-        from reservation_demo.student stu,
-        reservation_demo.student_reservation sr
+        from demo.student stu,
+        demo.student_reservation sr
         where stu.s_id = sr.s_id
         and stu.s_id = #{s_id}
         <if test="state != null">
@@ -97,7 +97,7 @@
 
     <!-- 添加学生预约信息-->
     <insert id="addStudentReservation" parameterType="StudentReservation">
-        insert into reservation_demo.student_reservation(s_id, time_id, room_id, building_id, reservation_date, state,
+        insert into demo.student_reservation(s_id, time_id, room_id, building_id, reservation_date, state,
                                                          room_name)
         VALUES (#{s_id}, #{time_id}, #{room_id}, #{building_id}, #{reservation_date}, #{state}, #{room_name})
     </insert>
@@ -105,7 +105,7 @@
     <!-- 删除学生预约信息-->
     <delete id="deleteCancelReservation" parameterType="StudentReservation">
         delete
-        from reservation_demo.student_reservation
+        from demo.student_reservation
         where s_id = #{s_id}
           and room_id = #{room_id}
           and time_id = #{time_id}
@@ -114,13 +114,13 @@
 
     <!-- 添加新学生-->
     <insert id="addStudent" parameterType="Student">
-        insert into reservation_demo.student(s_id, s_name, password, s_class, s_year, s_major, s_phone_number)
+        insert into demo.student(s_id, s_name, password, s_class, s_year, s_major, s_phone_number)
         values (#{s_id}, #{s_name}, #{password}, #{s_class}, #{s_year}, #{s_major}, #{s_phone_number})
     </insert>
 
     <!-- 修改学生状态-->
     <update id="updateStudentReservationState" parameterType="StudentReservation">
-        update reservation_demo.student_reservation
+        update demo.student_reservation
         set state = '预约取消'
         where s_id = #{s_id}
           and room_id = #{room_id}
@@ -130,17 +130,17 @@
 
     <!--    删除学生后，删除相关信息-->
     <delete id="deleteStudentById">
-        delete from reservation_demo.student
+        delete from demo.student
         where s_id = #{s_id}
     </delete>
 
     <delete id="deleteStudentBlackListById">
-        delete from reservation_demo.blacklist
+        delete from demo.blacklist
         where s_id = #{s_id}
     </delete>
 
     <delete id="deleteStudentReservationById">
-        delete from reservation_demo.student_reservation
+        delete from demo.student_reservation
         where s_id = #{s_id}
     </delete>
 </mapper>

@@ -7,18 +7,18 @@
 <!--    查询所有学生数量-->
     <select id="countStudent" resultType="int">
         select count(*) count_student
-        from reservation_demo.student
+        from demo.student
         where s_id != 'admin'
     </select>
 
     <select id="countClassroom" resultType="int">
         select count(*) count_classroom
-        from reservation_demo.classroom
+        from demo.classroom
     </select>
 
     <select id="countReservation" resultType="int">
         select count(*) count_reservation
-        from reservation_demo.student_reservation
+        from demo.student_reservation
     </select>
 
 

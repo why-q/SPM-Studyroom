@@ -52,16 +52,16 @@ mysql=(mysql --protocol=socket -uroot -p'ye0401')
 
 # Check if the database exists, create it if not
 echo "Check if the database exists, create it if not."
-if ! echo 'SHOW DATABASES;' | "${mysql[@]}" | grep -q 'reservation_demo'; then
-    echo "Creating database reservation_demo..."
-    echo "CREATE DATABASE reservation_demo;" | "${mysql[@]}"
+if ! echo 'SHOW DATABASES;' | "${mysql[@]}" | grep -q 'demo'; then
+    echo "Creating database demo..."
+    echo "CREATE DATABASE demo;" | "${mysql[@]}"
 fi
 
 # Import .sql file
 echo "Import .sql file."
 if [ -f /docker-entrypoint-initdb.d/auto_create.sql ]; then
     echo "Importing database from /docker-entrypoint-initdb.d/auto_create.sql"
-    "${mysql[@]}" reservation_demo </docker-entrypoint-initdb.d/auto_create.sql
+    "${mysql[@]}" demo </docker-entrypoint-initdb.d/auto_create.sql
 fi
 
 # Start the Spring Boot application

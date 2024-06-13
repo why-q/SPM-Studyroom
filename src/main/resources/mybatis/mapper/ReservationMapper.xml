@@ -20,11 +20,11 @@
         stu.s_phone_number,
         b.building_name ra_building_id,
         sr.state
-        from reservation_demo.student stu,
-        reservation_demo.time_table tb,
-        reservation_demo.student_reservation sr,
-        reservation_demo.room_available_time_info ra,
-        reservation_demo.t_building b
+        from demo.student stu,
+        demo.time_table tb,
+        demo.student_reservation sr,
+        demo.room_available_time_info ra,
+        demo.t_building b
         where stu.s_id = sr.s_id
         and sr.time_id = ra.time_id
         and sr.room_id = ra.room_id
@@ -73,11 +73,11 @@
         select sr.room_name, cr.room_floor, tb.building_name, tt.time_begin, tt.time_end,
         sr.reservation_date,cr.available_seat,
         count(sr.s_id) reservation_num
-        from reservation_demo.t_building tb,
-        reservation_demo.classroom cr,
-        reservation_demo.time_table tt,
-        reservation_demo.student_reservation sr,
-        reservation_demo.room_available_time_info ra
+        from demo.t_building tb,
+        demo.classroom cr,
+        demo.time_table tt,
+        demo.student_reservation sr,
+        demo.room_available_time_info ra
         where sr.time_id = ra.time_id
         and sr.room_id = ra.room_id
         and sr.building_id = ra.building_id
@@ -144,10 +144,10 @@
         ra.time_id ra_time_id,
         ra.room_id ra_room_id,
         ra.building_id ra_building_id
-        from reservation_demo.t_building tb,
-        reservation_demo.classroom cr,
-        reservation_demo.time_table tt,
-        reservation_demo.room_available_time_info ra
+        from demo.t_building tb,
+        demo.classroom cr,
+        demo.time_table tt,
+        demo.room_available_time_info ra
         where cr.building_id = tb.building_id
         and ra.time_id = tt.time_id
         and ra.room_id = tt.room_id
@@ -220,7 +220,7 @@
     <!--    根据学号查询所有取消预约的信息-->
     <select id="getAllCanceledReservationDateById" resultType="java.lang.String">
         select to_days(reservation_date)
-        from reservation_demo.student_reservation
+        from demo.student_reservation
         where state = '预约取消'
           and s_id = #{s_id}
     </select>
