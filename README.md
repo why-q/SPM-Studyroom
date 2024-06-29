@@ -37,4 +37,4 @@ CI/CD 的具体代码请参考以下文件：
 
 \***
 
-截图主要包括 CICD 平台的截图，放于文件夹 `./screenshots` 内；自动化测试、编译构建、部署以及系统功能的简要视频展示放于文件夹 `./screen-recordings` 内。软件最新版本 JAR 包放于 `./packages` 内。
+截图主要包括 CICD 平台截图以及系统成品截图，放于文件夹 `./screenshots` 内；自动化测试、编译构建、部署以及系统功能的简要视频展示放于文件夹 `./screen-recordings` 内；软件最新版本 JAR 包放于 `./packages` 内；课程 PPT 放于文件夹 `./ppt` 内。
